@@ -20,6 +20,8 @@ const emailsCollection = database.db(mongodb_database).collection('emails');
 app.set('view engine', 'ejs');
 
 app.use(express.urlencoded({ extended: false }));
+app.use("/css", express.static("./public/css"));
+app.use("/img", express.static("./public/images"));
 
 var mongoStore = MongoStore.create({
     mongoUrl: `mongodb+srv://${mongodb_user}:${mongodb_password}@${mongodb_host}/`
