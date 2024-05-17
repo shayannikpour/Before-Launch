@@ -29,6 +29,10 @@ h1,
   width: auto;
 }
 
+.logo {
+  margin-bottom: 17%;
+}
+
 .container .row .left-wrap {
   padding-right: 0;
   padding-left: 0;
