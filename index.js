@@ -59,3 +59,16 @@ app.post('/sendEmail', async (req, res) => {
         console.error('Error occurred:', error);
     }
 });
+
+app.get('/', (req, res) => {
+    res.render('index');
+});
+
+app.get("*", (req, res) => {
+    res.status(404);
+    res.render("404",);
+})
+
+app.listen(port, () => {
+    console.log("Node application listening on port " + port);
+}); 
