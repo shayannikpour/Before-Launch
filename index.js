@@ -1,5 +1,7 @@
 require("./utils.js");
 
+require('dotenv').config();
+
 const express = require('express');
 const MongoStore = require('connect-mongo');
 const nodemailer = require('nodemailer');
