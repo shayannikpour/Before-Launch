@@ -32,7 +32,9 @@ var mongoStore = MongoStore.create({
     mongoUrl: `mongodb+srv://${mongodb_user}:${mongodb_password}@${mongodb_host}/`
 })
 
-app.post('/sendEmail', async (req, res) => {
+app.post('/submitEmail', async (req, res) => {
+    var email=req.body.email;
+    await emailsCollection.insertOne({ email:email });
     try {
         const transporter = nodemailer.createTransport({
             service: 'Gmail',
@@ -41,11 +43,10 @@ app.post('/sendEmail', async (req, res) => {
                 pass: process.env.EMAIL_PASSWORD
             }
         });
-        if (!req.body.email) {
+        if (!email) {
             res.render("index");
             return;
         }
-        let email = req.body.email;
         const mailOptions = {
             from: 'roborental.team@gmail.com',
             to: email,
@@ -62,6 +63,7 @@ app.post('/sendEmail', async (req, res) => {
         };
         const info = await transporter.sendMail(mailOptions);
         console.log('Email sent:', info.messageId);
+        res.render('index');
     } catch (error) {
         console.error('Error occurred:', error);
     }
