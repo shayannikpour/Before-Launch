@@ -21,9 +21,11 @@ const emailsCollection = database.db(mongodb_database).collection('emails');
 app.set('view engine', 'ejs');
 
 app.use(express.urlencoded({ extended: false }));
-app.use('/styles', express.static(path.join(__dirname, 'styles')));
-app.use('/imgs', express.static(path.join(__dirname, 'imgs')));
-
+app.use("/css", express.static("./public/styles"));
+app.use("/img", express.static("./public/images"));
+app.use("/js", express.static("./public/"));
+app.use(express.static(path.join(__dirname, 'styles')));
+app.use(express.static(path.join(__dirname, 'scripts')));
 
 
 var mongoStore = MongoStore.create({
