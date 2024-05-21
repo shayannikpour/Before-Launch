@@ -4,6 +4,7 @@ require('dotenv').config();
 
 const express = require('express');
 const MongoStore = require('connect-mongo');
+const path = require('path');
 const nodemailer = require('nodemailer');
 const port = process.env.PORT || 3000;
 const app = express();
@@ -20,8 +21,12 @@ const emailsCollection = database.db(mongodb_database).collection('emails');
 app.set('view engine', 'ejs');
 
 app.use(express.urlencoded({ extended: false }));
-app.use("/css", express.static("./public/css"));
+app.use("/css", express.static("./public/styles"));
 app.use("/img", express.static("./public/images"));
+app.use("/js", express.static("./public/"));
+app.use(express.static(path.join(__dirname, 'styles')));
+app.use(express.static(path.join(__dirname, 'scripts')));
+
 
 var mongoStore = MongoStore.create({
     mongoUrl: `mongodb+srv://${mongodb_user}:${mongodb_password}@${mongodb_host}/`
@@ -65,11 +70,6 @@ app.post('/sendEmail', async (req, res) => {
 app.get('/', (req, res) => {
     res.render('index');
 });
-
-app.get("*", (req, res) => {
-    res.status(404);
-    res.render("404",);
-})
 
 app.listen(port, () => {
     console.log("Node application listening on port " + port);

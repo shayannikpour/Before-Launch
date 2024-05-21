@@ -1,4 +1,5 @@
 var yourDate = "2024-05-29" 
+console.log("Script connected");
 ! function (e) {
     var t = {};
 
