@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang=en>
+
 <head>
     <meta charset=UTF-8 />
     <meta name=description content="Robo Rental">
@@ -19,7 +20,18 @@
     <script src=https://kit.fontawesome.com/3c09bcb51a.js></script>
     <title>Before-Launch</title>
     <link href="/main.css" rel="stylesheet">
-    
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-643GMZ8E80"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-643GMZ8E80');
+    </script>
+
+
 </head>
 
 <body>
@@ -43,8 +55,9 @@
                     </div>
                     <h1>Subscribe and be the first to get updated</h1>
                     <p class=slogan></p>
-                    <form class=form-subscribe action="/submitEmail" method="post"> <input name="email" type=email class=form placeholder="Your email address"
-                            required> <button type=submit>Subscribe</button> </form>
+                    <form class=form-subscribe action="/submitEmail" method="post"> <input name="email" type=email
+                            class=form placeholder="Your email address" required> <button type=submit>Subscribe</button>
+                    </form>
                 </div>
             </div>
         </div>
